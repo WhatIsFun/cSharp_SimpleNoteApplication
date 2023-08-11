@@ -1,0 +1,15 @@
+C:\Users\user\Desktop\code-TRA\git-starter\cSharp-SimpleNoteApplication\bin\Debug\net6.0\cSharp-SimpleNoteApplication.exe
+C:\Users\user\Desktop\code-TRA\git-starter\cSharp-SimpleNoteApplication\bin\Debug\net6.0\cSharp-SimpleNoteApplication.deps.json
+C:\Users\user\Desktop\code-TRA\git-starter\cSharp-SimpleNoteApplication\bin\Debug\net6.0\cSharp-SimpleNoteApplication.runtimeconfig.json
+C:\Users\user\Desktop\code-TRA\git-starter\cSharp-SimpleNoteApplication\bin\Debug\net6.0\cSharp-SimpleNoteApplication.dll
+C:\Users\user\Desktop\code-TRA\git-starter\cSharp-SimpleNoteApplication\bin\Debug\net6.0\cSharp-SimpleNoteApplication.pdb
+C:\Users\user\Desktop\code-TRA\git-starter\cSharp-SimpleNoteApplication\obj\Debug\net6.0\cSharp-SimpleNoteApplication.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\code-TRA\git-starter\cSharp-SimpleNoteApplication\obj\Debug\net6.0\cSharp-SimpleNoteApplication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Desktop\code-TRA\git-starter\cSharp-SimpleNoteApplication\obj\Debug\net6.0\cSharp-SimpleNoteApplication.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\code-TRA\git-starter\cSharp-SimpleNoteApplication\obj\Debug\net6.0\cSharp-SimpleNoteApplication.AssemblyInfo.cs
+C:\Users\user\Desktop\code-TRA\git-starter\cSharp-SimpleNoteApplication\obj\Debug\net6.0\cSharp-SimpleNoteApplication.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\code-TRA\git-starter\cSharp-SimpleNoteApplication\obj\Debug\net6.0\cSharp-SimpleNoteApplication.dll
+C:\Users\user\Desktop\code-TRA\git-starter\cSharp-SimpleNoteApplication\obj\Debug\net6.0\refint\cSharp-SimpleNoteApplication.dll
+C:\Users\user\Desktop\code-TRA\git-starter\cSharp-SimpleNoteApplication\obj\Debug\net6.0\cSharp-SimpleNoteApplication.pdb
+C:\Users\user\Desktop\code-TRA\git-starter\cSharp-SimpleNoteApplication\obj\Debug\net6.0\cSharp-SimpleNoteApplication.genruntimeconfig.cache
+C:\Users\user\Desktop\code-TRA\git-starter\cSharp-SimpleNoteApplication\obj\Debug\net6.0\ref\cSharp-SimpleNoteApplication.dll
