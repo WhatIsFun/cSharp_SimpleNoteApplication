@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace cSharp_SimpleNoteApplication
 {
     internal class Menu
     {
-        //private static string NoteDirectory = "/Note";
+        static List<Note> note = new List<Note>();
+        private static string NoteDirectory = "Note App";
+        private static string NoteFile = "Note App/Notes.xml";
         public void DisplayMenu()
         {
             Console.WriteLine("Menu: \n1) New note\n2) Edit note\n3) Read note\n4) Delete note\n5) Display notes\n6) Exit");
@@ -63,7 +69,7 @@ namespace cSharp_SimpleNoteApplication
                 }
             }
         }
-        static void NewNote()
+        public void NewNote()
         {
             Console.WriteLine("Please enter note title:");
             string title = Console.ReadLine();
@@ -71,27 +77,48 @@ namespace cSharp_SimpleNoteApplication
             string content = Console.ReadLine();
             string dateTime = DateTime.Now.ToString("dd/MM/yyyy hh:mm tt"); //date and time
             // add to the list
-
-            XmlWriterSettings NoteSettings = new XmlWriterSettings();
-
-            NoteSettings.CheckCharacters = false;
-            NoteSettings.ConformanceLevel = ConformanceLevel.Auto;
-            NoteSettings.Indent = true;
-
-            string FileName = title + ".xml";
-            using (XmlWriter NewNote = XmlWriter.Create(FileName, NoteSettings))
+            note.Add(new Note { Title = title, Content = content, DateTime = dateTime });
+            SaveNote();
+        }
+        public void SaveNote()
+        {
+            try
             {
-
-                NewNote.WriteStartDocument();
-                NewNote.WriteStartElement("Title", title);
-                NewNote.WriteElementString("dateTime", dateTime);
-                NewNote.WriteElementString("Content", content);
-                NewNote.WriteEndElement();
-
-                NewNote.Flush();
-                NewNote.Close();
-
-
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Note>));
+                using (TextWriter NewNote = new StreamWriter(NoteFile))
+                {
+                    serializer.Serialize(NewNote, note);
+                    Console.WriteLine("Notes saved successfully!");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving notes: {ex.Message}");
+            }
+        }
+        public void LoadNote()
+        {
+            // Create Folder if it doesn't exist
+            Directory.CreateDirectory(NoteDirectory);
+            try
+            {
+                if (File.Exists(NoteFile))
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<Note>));
+                    using (FileStream stream = File.OpenRead(NoteFile))
+                    {
+                        note = (List<Note>)serializer.Deserialize(stream);
+                    }
+                }
+                else
+                {
+                    SaveNote(); //Create xml file if it doesn't exist
+                }
+                Console.WriteLine("Notes loaded successfully!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading notes: {ex.Message}");
             }
         }
     }
