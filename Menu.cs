@@ -36,10 +36,10 @@ namespace cSharp_SimpleNoteApplication
                             EditNote();
                             break;
                         case 3:
-                            //ReadNote();
+                            ReadNote();
                             break;
                         case 4:
-                            //DeleteNote();
+                            DeleteNote();
                             break;
                         case 5:
                             //DisplayNote();
@@ -146,6 +146,53 @@ namespace cSharp_SimpleNoteApplication
                 noteToEdit.DateTime = DateTime.Now.ToString("dd/MM/yyyy hh:mm tt");
 
                 Console.WriteLine("Note edited successfully!");
+                SaveNote();
+            }
+            else
+            {
+                Console.WriteLine("No note with the specified title found.");
+            }
+        }
+        public void ReadNote()
+        {
+            if (note.Count == 0)
+            {
+                Console.WriteLine("No notes found.");
+                return;
+            }
+
+            Console.Write("Enter the title of the note to read: ");
+            string searchTitle = Console.ReadLine();
+
+            Note noteToRead = FindNoteByTitle(searchTitle);
+            if (noteToRead != null)
+            {
+                Console.WriteLine($"Title: {noteToRead.Title}");
+                Console.WriteLine($"{noteToRead.DateTime}\n");
+                Console.WriteLine(noteToRead.Content);
+            }
+            else
+            {
+                Console.WriteLine("No note with the specified title found.");
+            }
+        }
+        public void DeleteNote()
+        {
+            if (note.Count == 0)
+            {
+                Console.WriteLine("No notes found.");
+                return;
+            }
+
+            Console.Write("Enter the title of the note to delete: ");
+            string searchTitle = Console.ReadLine();
+
+            Note noteToDelete = FindNoteByTitle(searchTitle);
+            if (noteToDelete != null)
+            {
+                note.Remove(noteToDelete);
+
+                Console.WriteLine("Note deleted successfully!");
                 SaveNote();
             }
             else
