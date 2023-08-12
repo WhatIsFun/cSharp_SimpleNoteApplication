@@ -42,7 +42,7 @@ namespace cSharp_SimpleNoteApplication
                             DeleteNote();
                             break;
                         case 5:
-                            //DisplayNote();
+                            DisplayNote();
                             break;
                         case 6:
                             Console.Write("Are you sure you want to exit? (y/n) "); // Check if the user want to exit the application
@@ -198,6 +198,20 @@ namespace cSharp_SimpleNoteApplication
             else
             {
                 Console.WriteLine("No note with the specified title found.");
+            }
+        }
+        public void DisplayNote()
+        {
+            if (note.Count == 0)
+            {
+                Console.WriteLine("No notes found.");
+                return;
+            }
+
+            Console.WriteLine("Notes:");
+            for (int i = 0; i < note.Count; i++)
+            {
+                Console.WriteLine($"Note {i + 1} - Title: {note[i].Title} \n {note[i].DateTime}\n______________________");
             }
         }
     }
