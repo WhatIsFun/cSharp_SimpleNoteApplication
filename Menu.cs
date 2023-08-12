@@ -18,7 +18,9 @@ namespace cSharp_SimpleNoteApplication
         private static string NoteFile = "Note App/Notes.xml";
         public void DisplayMenu()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Menu: \n1) New note\n2) Edit note\n3) Read note\n4) Delete note\n5) Display notes\n6) Exit");
+            Console.ResetColor();
             while (true)
             {
                 try
@@ -45,9 +47,11 @@ namespace cSharp_SimpleNoteApplication
                             DisplayNote();
                             break;
                         case 6:
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.Write("Are you sure you want to exit? (y/n) "); // Check if the user want to exit the application
                             string ExitInput = Console.ReadLine();
                             ExitInput.ToLower();
+                            Console.ResetColor();
                             if (ExitInput.Equals("y", StringComparison.OrdinalIgnoreCase))
                             {
                                 Console.Write("Thank You");
@@ -209,9 +213,18 @@ namespace cSharp_SimpleNoteApplication
             }
 
             Console.WriteLine("Notes:");
+            Console.WriteLine("--------------------------------------------------------------");
+
             for (int i = 0; i < note.Count; i++)
             {
-                Console.WriteLine($"Note {i + 1} - Title: {note[i].Title} \n {note[i].DateTime}\n______________________");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine($"Note {i + 1}");
+                Console.ResetColor();
+
+                Console.WriteLine($"Title: {note[i].Title}");
+                Console.WriteLine($"{note[i].DateTime}\n");
+                Console.WriteLine(note[i].Content);
+                Console.WriteLine("--------------------------------------------------------------");
             }
         }
     }

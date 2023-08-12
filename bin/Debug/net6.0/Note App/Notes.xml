@@ -25,4 +25,9 @@
     <Content>Use meaningful variable names.</Content>
     <DateTime>12/08/2023 09:28 PM</DateTime>
   </Note>
+  <Note>
+    <Title>PC specs</Title>
+    <Content>cpu, RAM, MB, gpu, psu</Content>
+    <DateTime>12/08/2023 10:08 PM</DateTime>
+  </Note>
 </ArrayOfNote>
