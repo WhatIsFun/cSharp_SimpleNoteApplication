@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "n1u9ifzFTMOUcdxSk+OnqJ620WtJuouVgqb7RSuD4+xyZIVcgDkekyL8DYRRgtHtmdhCcHtEQzSiwDlq4zB+EA==",
+  "dgSpecHash": "QEZXSeEqWigB4p9xtYufTd4Jn8MdSPtTdFezXDNl8XF2iwyve9XObA8b9YriFxp6RSytmJJ7lsOVQTDKqLAP+A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Desktop\\code-TRA\\git-starter\\cSharp-SimpleNoteApplication\\cSharp-SimpleNoteApplication.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\moham\\Source\\Repos\\cSharp_SimpleNoteApplication\\cSharp-SimpleNoteApplication.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\moham\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.21\\microsoft.windowsdesktop.app.ref.6.0.21.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.21\\microsoft.netcore.app.ref.6.0.21.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.21\\microsoft.aspnetcore.app.ref.6.0.21.nupkg.sha512",
+    "C:\\Users\\moham\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.21\\microsoft.netcore.app.host.win-x64.6.0.21.nupkg.sha512"
+  ],
   "logs": []
 }
