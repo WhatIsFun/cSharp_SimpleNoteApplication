@@ -10,6 +10,9 @@ namespace cSharp_SimpleNoteApplication
             Console.WriteLine("      Welcome To    ");
             Console.WriteLine(" +-+-+-+-+-+-+-+-+-+\r\n |W|h|a|t|I|s|F|u|n|\r\n +-+-+-+-+-+-+-+-+-+");
             Console.WriteLine("        Notes      \n");
+            Menu menu = new Menu();
+            menu.LoadNote();
+            menu.DisplayMenu();
 
         }
     }
