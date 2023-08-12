@@ -33,7 +33,7 @@ namespace cSharp_SimpleNoteApplication
                             NewNote();
                             break;
                         case 2:
-                            // EditNote();
+                            EditNote();
                             break;
                         case 3:
                             //ReadNote();
@@ -119,6 +119,38 @@ namespace cSharp_SimpleNoteApplication
             catch (Exception ex)
             {
                 Console.WriteLine($"Error loading notes: {ex.Message}");
+            }
+        }
+        static Note FindNoteByTitle(string searchTitle)
+        {
+            return note.Find(note => note.Title.Equals(searchTitle, StringComparison.OrdinalIgnoreCase));
+        }
+        public void EditNote()
+        {
+            if (note.Count == 0)
+            {
+                Console.WriteLine("No notes found.");
+                return;
+            }
+            Console.Write("Enter the title of the note to edit: ");
+            string searchTitle = Console.ReadLine();
+            Note noteToEdit = FindNoteByTitle(searchTitle);
+            if (noteToEdit != null)
+            {
+                Console.Write("Enter new note title: ");
+                noteToEdit.Title = Console.ReadLine();
+
+                Console.Write("Enter new note content: ");
+                noteToEdit.Content = Console.ReadLine();
+
+                noteToEdit.DateTime = DateTime.Now.ToString("dd/MM/yyyy hh:mm tt");
+
+                Console.WriteLine("Note edited successfully!");
+                SaveNote();
+            }
+            else
+            {
+                Console.WriteLine("No note with the specified title found.");
             }
         }
     }
