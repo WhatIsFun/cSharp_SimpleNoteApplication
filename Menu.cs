@@ -18,7 +18,9 @@ namespace cSharp_SimpleNoteApplication
         private static string NoteFile = "Note App/Notes.xml";
         public void DisplayMenu()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Menu: \n1) New note\n2) Edit note\n3) Read note\n4) Delete note\n5) Display notes\n6) Exit");
+            Console.ResetColor();
             while (true)
             {
                 try
@@ -33,21 +35,23 @@ namespace cSharp_SimpleNoteApplication
                             NewNote();
                             break;
                         case 2:
-                            // EditNote();
+                            EditNote();
                             break;
                         case 3:
-                            //ReadNote();
+                            ReadNote();
                             break;
                         case 4:
-                            //DeleteNote();
+                            DeleteNote();
                             break;
                         case 5:
-                            //DisplayNote();
+                            DisplayNote();
                             break;
                         case 6:
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.Write("Are you sure you want to exit? (y/n) "); // Check if the user want to exit the application
                             string ExitInput = Console.ReadLine();
                             ExitInput.ToLower();
+                            Console.ResetColor();
                             if (ExitInput.Equals("y", StringComparison.OrdinalIgnoreCase))
                             {
                                 Console.Write("Thank You");
@@ -119,6 +123,108 @@ namespace cSharp_SimpleNoteApplication
             catch (Exception ex)
             {
                 Console.WriteLine($"Error loading notes: {ex.Message}");
+            }
+        }
+        static Note FindNoteByTitle(string searchTitle)
+        {
+            return note.Find(note => note.Title.Equals(searchTitle, StringComparison.OrdinalIgnoreCase));
+        }
+        public void EditNote()
+        {
+            if (note.Count == 0)
+            {
+                Console.WriteLine("No notes found.");
+                return;
+            }
+            Console.Write("Enter the title of the note to edit: ");
+            string searchTitle = Console.ReadLine();
+            Note noteToEdit = FindNoteByTitle(searchTitle);
+            if (noteToEdit != null)
+            {
+                Console.Write("Enter new note title: ");
+                noteToEdit.Title = Console.ReadLine();
+
+                Console.Write("Enter new note content: ");
+                noteToEdit.Content = Console.ReadLine();
+
+                noteToEdit.DateTime = DateTime.Now.ToString("dd/MM/yyyy hh:mm tt");
+
+                Console.WriteLine("Note edited successfully!");
+                SaveNote();
+            }
+            else
+            {
+                Console.WriteLine("No note with the specified title found.");
+            }
+        }
+        public void ReadNote()
+        {
+            if (note.Count == 0)
+            {
+                Console.WriteLine("No notes found.");
+                return;
+            }
+
+            Console.Write("Enter the title of the note to read: ");
+            string searchTitle = Console.ReadLine();
+
+            Note noteToRead = FindNoteByTitle(searchTitle);
+            if (noteToRead != null)
+            {
+                Console.WriteLine($"Title: {noteToRead.Title}");
+                Console.WriteLine($"{noteToRead.DateTime}\n");
+                Console.WriteLine(noteToRead.Content);
+            }
+            else
+            {
+                Console.WriteLine("No note with the specified title found.");
+            }
+        }
+        public void DeleteNote()
+        {
+            if (note.Count == 0)
+            {
+                Console.WriteLine("No notes found.");
+                return;
+            }
+
+            Console.Write("Enter the title of the note to delete: ");
+            string searchTitle = Console.ReadLine();
+
+            Note noteToDelete = FindNoteByTitle(searchTitle);
+            if (noteToDelete != null)
+            {
+                note.Remove(noteToDelete);
+
+                Console.WriteLine("Note deleted successfully!");
+                SaveNote();
+            }
+            else
+            {
+                Console.WriteLine("No note with the specified title found.");
+            }
+        }
+        public void DisplayNote()
+        {
+            if (note.Count == 0)
+            {
+                Console.WriteLine("No notes found.");
+                return;
+            }
+
+            Console.WriteLine("Notes:");
+            Console.WriteLine("--------------------------------------------------------------");
+
+            for (int i = 0; i < note.Count; i++)
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine($"Note {i + 1}");
+                Console.ResetColor();
+
+                Console.WriteLine($"Title: {note[i].Title}");
+                Console.WriteLine($"{note[i].DateTime}\n");
+                Console.WriteLine(note[i].Content);
+                Console.WriteLine("--------------------------------------------------------------");
             }
         }
     }
